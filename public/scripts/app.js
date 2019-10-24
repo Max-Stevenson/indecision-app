@@ -31,34 +31,37 @@ var template = React.createElement(
 
 var user = {
     name: 'Max',
-    age: 28,
+    age: 18,
     location: 'Windsor, UK'
 };
 
-var userName = 'Max';
-var userAge = 28;
-var userLocation = 'Windsor, UK';
-var secondTemplate = React.createElement(
+function getLocation(user) {
+    if (user.location != undefined) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            user.location
+        );
+    };
+};
+
+var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
         'Name: ',
-        user.name
+        user.name ? user.name : 'Anon'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.location
-    )
+    getLocation(user)
 );
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

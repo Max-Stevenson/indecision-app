@@ -15,19 +15,22 @@ var template = (
 
 var user = {
     name: 'Max',
-    age: 28,
+    age: 18,
     location: 'Windsor, UK'
 };
 
-var userName = 'Max';
-var userAge = 28;
-var userLocation = 'Windsor, UK';
-var secondTemplate = (
+function getLocation(user) {
+    if (user.location != undefined) {
+        return <p>Location: {user.location}</p>;
+    };
+};
+
+var templateTwo= (
     <div>
-        <h1>Name: {user.name}</h1>
-        <p>Age: {user.age}</p>
-        <p>Location: {user.location}</p>
+        <h1>Name: {user.name ? user.name : 'Anon'}</h1>
+        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+        {getLocation(user)}
     </div>
 );
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
