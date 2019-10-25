@@ -1,10 +1,10 @@
-var app = {
+const app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
     options: ['One ', 'Two ']
 };
 
-var template = (
+const template = (
     <div> 
         <h1>{app.title}</h1> 
         {app.subtitle && <p>{app.subtitle}</p>}
@@ -15,7 +15,7 @@ var template = (
     </div>
 );
 
-var user = {
+const user = {
     name: 'Max',
     age: 18,
     location: 'Windsor, UK'
@@ -27,12 +27,12 @@ function getLocation(user) {
     };
 };
 
-var templateTwo= (
+const templateTwo= (
     <div>
         <h1>Name: {user.name ? user.name : 'Anon'}</h1>
         {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
         {getLocation(user)}
     </div>
 );
-var appRoot = document.getElementById('app');
+let appRoot = document.getElementById('app');
 ReactDOM.render(template, appRoot);
