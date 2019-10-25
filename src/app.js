@@ -8,7 +8,7 @@ var template = (
     <div> 
         <h1>{app.title}</h1> 
         {app.subtitle && <p>{app.subtitle}</p>}
-        {app.options ? <p>Here are your options: {app.options}</p> : <p>No options</p>}
+        <p>{app.options.length > 0 ? 'Here are your options: ': 'No options'}</p>
         <ol>
             <li>I'm a list item</li>
         </ol>
