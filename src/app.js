@@ -1,52 +1,40 @@
 const app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
-    options: ['One ', 'Two ']
+    options: []
 };
 
-const template = (
-    <div> 
-        <h1>{app.title}</h1> 
-        {app.subtitle && <p>{app.subtitle}</p>}
-        <p>{app.options.length > 0 ? 'Here are your options: ': 'No options'}</p>
-        <ol>
-            <li>I'm a list item</li>
-        </ol>
-    </div>
-);
+const onFormSubmit = (event) => {
+    event.preventDefault();
+    const option = event.target.elements.option.value;
 
-const user = {
-    name: 'Max',
-    age: 18,
-    location: 'Windsor, UK'
-};
-
-function getLocation(user) {
-    if (user.location != undefined) {
-        return <p>Location: {user.location}</p>;
+    if (option) {
+        app.options.push(option);
+        event.target.elements.option.value = '';
+        renderFunction();
     };
 };
 
-let count = 0;
-const addOne = () => {
-    console.log('addOne');
+
+
+const renderFunction = () => {
+    const template = (
+        <div> 
+            <h1>{app.title}</h1> 
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? 'Here are your options: ': 'No options'}</p>
+            <p>{app.options.length}</p>
+            <ol>
+                <li>I'm a list item</li>
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"></input>
+                <button>Add Option</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, appRoot);
 };
 
-const minusOne = () =>{
-    console.log('minusOne');
-};
-
-const reset = () => {
-    console.log('reset');
-};
-
-const templateTwo= (
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne} id="myButton" className="buttonClass">+1</button>
-        <button onClick={minusOne}>-1</button>
-        <button onClick={reset}>reset</button>
-    </div>
-);
 let appRoot = document.getElementById('app');
-ReactDOM.render(templateTwo, appRoot);
+renderFunction();
