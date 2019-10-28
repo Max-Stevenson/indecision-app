@@ -17,6 +17,12 @@ var onFormSubmit = function onFormSubmit(event) {
     };
 };
 
+var clearArray = function clearArray(event) {
+    event.preventDefault();
+    app.options = [];
+    renderFunction();
+};
+
 var renderFunction = function renderFunction() {
     var template = React.createElement(
         'div',
@@ -42,13 +48,20 @@ var renderFunction = function renderFunction() {
             app.options.length
         ),
         React.createElement(
+            'button',
+            { onClick: clearArray },
+            'Remove All'
+        ),
+        React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'I\'m a list item'
-            )
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',
