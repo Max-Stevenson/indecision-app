@@ -37,22 +37,33 @@ class Header extends React.Component {
 };
 
 class Action extends React.Component {
+
+	handleClick() {
+		alert('ayyyy');
+	};
+
 	render() {
 		return (
 			<div>
-				<button>What should I do?</button>
+				<button onClick={this.handleClick}>What should I do?</button>
 			</div>
 		);
 	};
 };
 
 class Options extends React.Component {
+
+	handleRemoveAll() {
+		alert('ayo');
+	};
+
 	render() {
 		return (
 			<div>
 				{
 					this.props.options.map((option) => <Option key={option} optionText={option}></Option>)
 				}
+				<button onClick={this.handleRemoveAll}>Remove all options</button>
 			</div>
 		);
 	};
