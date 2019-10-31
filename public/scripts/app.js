@@ -16,6 +16,8 @@ var IndecisionApp = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
+		_this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
+		_this.handleAddOption = _this.handleAddOption.bind(_this);
 		_this.state = {
 			options: ['thing one', 'thing two', 'thing three', 'thing four']
 		};
@@ -23,6 +25,24 @@ var IndecisionApp = function (_React$Component) {
 	}
 
 	_createClass(IndecisionApp, [{
+		key: 'handleDeleteOptions',
+		value: function handleDeleteOptions() {
+			this.setState(function () {
+				return {
+					options: []
+				};
+			});
+		}
+	}, {
+		key: 'handleAddOption',
+		value: function handleAddOption(option) {
+			this.setState(function (prevState) {
+				return {
+					options: prevState.options.concat(option)
+				};
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var title = 'Indecision App';
@@ -32,9 +52,9 @@ var IndecisionApp = function (_React$Component) {
 				'div',
 				null,
 				React.createElement(Header, { title: title, subtitle: subtitle }),
-				React.createElement(Action, null),
-				React.createElement(Options, { options: this.state.options }),
-				React.createElement(AddOption, null)
+				React.createElement(Action, { hasOptions: this.state.options.length > 0 }),
+				React.createElement(Options, { options: this.state.options, handleDeleteOptions: this.handleDeleteOptions }),
+				React.createElement(AddOption, { handleAddOption: this.handleAddOption })
 			);
 		}
 	}]);
@@ -125,7 +145,10 @@ var Action = function (_React$Component4) {
 				null,
 				React.createElement(
 					'button',
-					{ onClick: this.handleClick },
+					{
+						onClick: this.handleClick,
+						disabled: !this.props.hasOptions
+					},
 					'What should I do?'
 				)
 			);
@@ -140,34 +163,26 @@ var Action = function (_React$Component4) {
 var Options = function (_React$Component5) {
 	_inherits(Options, _React$Component5);
 
-	function Options(props) {
+	function Options() {
 		_classCallCheck(this, Options);
 
-		var _this5 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
-
-		_this5.handleRemoveAll = _this5.handleRemoveAll.bind(_this5);
-		return _this5;
+		return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
 	}
 
 	_createClass(Options, [{
-		key: 'handleRemoveAll',
-		value: function handleRemoveAll() {
-			alert(this.props.options);
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			return React.createElement(
 				'div',
 				null,
-				this.props.options.map(function (option) {
-					return React.createElement(Option, { key: option, optionText: option });
-				}),
 				React.createElement(
 					'button',
-					{ onClick: this.handleRemoveAll },
+					{ onClick: this.props.handleDeleteOptions },
 					'Remove all options'
-				)
+				),
+				this.props.options.map(function (option) {
+					return React.createElement(Option, { key: option, optionText: option });
+				})
 			);
 		}
 	}]);
@@ -180,20 +195,23 @@ var Options = function (_React$Component5) {
 var AddOption = function (_React$Component6) {
 	_inherits(AddOption, _React$Component6);
 
-	function AddOption() {
+	function AddOption(props) {
 		_classCallCheck(this, AddOption);
 
-		return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+		var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+		_this6.handleAddOption = _this6.handleAddOption.bind(_this6);
+		return _this6;
 	}
 
 	_createClass(AddOption, [{
 		key: 'handleAddOption',
 		value: function handleAddOption(event) {
 			event.preventDefault();
-			var option = event.target.elements.option.value;
+			var option = event.target.elements.option.value.trim();
 
 			if (option) {
-				alert(option);
+				this.props.handleAddOption(option);
 			};
 		}
 	}, {
