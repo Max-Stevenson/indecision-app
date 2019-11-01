@@ -37,10 +37,17 @@ class IndecisionApp extends React.Component {
 
 		return (
 			<div>
-				<Header title={title} subtitle={subtitle}></Header>
-				<Action hasOptions={this.state.options.length > 0} handleClick={this.handleClick}></Action>
-				<Options options={this.state.options} handleDeleteOptions={this.handleDeleteOptions}></Options>
-				<AddOption handleAddOption={this.handleAddOption}></AddOption>
+				<Header 
+				title={title} 
+				subtitle={subtitle}/>
+				<Action 
+				hasOptions={this.state.options.length > 0} 
+				handleClick={this.handleClick}/>
+				<Options 
+				options={this.state.options} 
+				handleDeleteOptions={this.handleDeleteOptions}/>
+				<AddOption 
+				handleAddOption={this.handleAddOption}/>
 			</div>
 		);
 	};
@@ -74,8 +81,8 @@ class Action extends React.Component {
 			<div>
 				<button 
 				onClick={this.props.handleClick}
-				disabled={!this.props.hasOptions}
-				>What should I do?
+				disabled={!this.props.hasOptions}>
+				What should I do?
 				</button>
 			</div>
 		);
