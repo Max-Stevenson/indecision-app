@@ -18,6 +18,7 @@ var IndecisionApp = function (_React$Component) {
 
 		_this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
 		_this.handleAddOption = _this.handleAddOption.bind(_this);
+		_this.handleClick = _this.handleClick.bind(_this);
 		_this.state = {
 			options: ['thing one', 'thing two', 'thing three', 'thing four']
 		};
@@ -32,6 +33,12 @@ var IndecisionApp = function (_React$Component) {
 					options: []
 				};
 			});
+		}
+	}, {
+		key: 'handleClick',
+		value: function handleClick() {
+			var optionIdx = Math.floor(Math.random() * this.state.options.length);
+			console.log(this.state.options[optionIdx]);
 		}
 	}, {
 		key: 'handleAddOption',
@@ -52,7 +59,7 @@ var IndecisionApp = function (_React$Component) {
 				'div',
 				null,
 				React.createElement(Header, { title: title, subtitle: subtitle }),
-				React.createElement(Action, { hasOptions: this.state.options.length > 0 }),
+				React.createElement(Action, { hasOptions: this.state.options.length > 0, handleClick: this.handleClick }),
 				React.createElement(Options, { options: this.state.options, handleDeleteOptions: this.handleDeleteOptions }),
 				React.createElement(AddOption, { handleAddOption: this.handleAddOption })
 			);
@@ -133,11 +140,6 @@ var Action = function (_React$Component4) {
 	}
 
 	_createClass(Action, [{
-		key: 'handleClick',
-		value: function handleClick() {
-			alert('ayyyy');
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			return React.createElement(
@@ -146,7 +148,7 @@ var Action = function (_React$Component4) {
 				React.createElement(
 					'button',
 					{
-						onClick: this.handleClick,
+						onClick: this.props.handleClick,
 						disabled: !this.props.hasOptions
 					},
 					'What should I do?'
