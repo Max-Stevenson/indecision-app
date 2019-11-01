@@ -36,9 +36,12 @@ var Counter = function (_React$Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var count = localStorage.getItem('count');
-			this.setState(function () {
-				return { count: count };
-			});
+
+			if (!isNaN(count)) {
+				this.setState(function () {
+					return { count: count };
+				});
+			};
 		}
 	}, {
 		key: 'handleAddOne',
