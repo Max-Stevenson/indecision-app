@@ -1,11 +1,7 @@
-import subtract, { square, add } from './utils';
-import { isAdult, canDrink } from './person';
+import validator from 'validator';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(square(5));
-console.log(add(5, 5));
-console.log(subtract(10, 5));
-
-console.log(canDrink(16));
-console.log(isAdult(18));
-
-console.log('webpackApp.js running fine still');
+const template = React.createElement('p', {}, 'hello');
+ReactDOM.render(template, document.getElementById('app'));
+console.log('hello');
