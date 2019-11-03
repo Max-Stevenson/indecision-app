@@ -1,7 +1,6 @@
-import validator from 'validator';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const template = React.createElement('p', {}, 'hello');
+const template = <p>I hate setting up react with babel and webpack</p>;
+
 ReactDOM.render(template, document.getElementById('app'));
-console.log('hello');
