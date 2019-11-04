@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AddOption from './components/AddOption';
-import Option from './components/Option';
+import Options from './components/Options';
 import Header from './components/Header';
 import Action from './components/Action';
 
@@ -92,24 +92,6 @@ IndecisionApp.defaultProps = {
 
 Header.defaultProps = {
 	title: 'Indecision App'
-};
-
-const Options = (props) => {
-	return (
-		<div>
-			<button onClick={props.handleDeleteOptions}>Remove all options</button>
-			{props.options.length === 0 && <p>Please add an option to get started!</p> }
-			{
-				props.options.map((option) => (
-					<Option
-						key={option}
-						optionText={option}
-						handleDeleteOption={props.handleDeleteOption}
-					/>
-				))
-			}
-		</div>
-	);
 };
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
