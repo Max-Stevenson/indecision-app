@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AddOption from './components/AddOption';
 import Option from './components/Option';
+import Header from './components/Header';
+import Action from './components/Action';
 
 class IndecisionApp extends React.Component {
 	constructor(props) {
@@ -88,17 +90,8 @@ IndecisionApp.defaultProps = {
 	options: []
 };
 
-const Header = (props) => {
-	return (
-		<div>
-			<h1>{props.title}</h1>
-			{props.subtitle && <h2>{props.subtitle}</h2>}
-		</div>
-	);
-};
-
 Header.defaultProps = {
-	title: 'some default'
+	title: 'Indecision App'
 };
 
 const Options = (props) => {
@@ -115,18 +108,6 @@ const Options = (props) => {
 					/>
 				))
 			}
-		</div>
-	);
-};
-
-const Action = (props) => {
-	return (
-		<div>
-			<button
-				onClick={props.handleClick}
-				disabled={!props.hasOptions}>
-				What should I do?
-			</button>
 		</div>
 	);
 };
