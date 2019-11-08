@@ -7,7 +7,7 @@ import OptionModal from './OptionModal';
 
 export default class IndecisionApp extends React.Component {
 	state = {
-		options: [], 
+		options: [],
 		selectedOption: undefined
 	};
 
@@ -53,21 +53,23 @@ export default class IndecisionApp extends React.Component {
 
 		return (
 			<div>
-				<Header
-					title={title}
-					subtitle={subtitle} />
-				<Action
-					hasOptions={this.state.options.length > 0}
-					handleClick={this.handleClick} />
-				<Options
-					options={this.state.options}
-					handleDeleteOptions={this.handleDeleteOptions}
-					handleDeleteOption={this.handleDeleteOption} />
-				<AddOption
-					handleAddOption={this.handleAddOption} />
-				<OptionModal 
-				selectedOption={this.state.selectedOption}
-				clearSelectedOption={this.clearSelectedOption}/>
+				<div className='container'>
+					<Header
+						title={title}
+						subtitle={subtitle} />
+					<Action
+						hasOptions={this.state.options.length > 0}
+						handleClick={this.handleClick} />
+					<Options
+						options={this.state.options}
+						handleDeleteOptions={this.handleDeleteOptions}
+						handleDeleteOption={this.handleDeleteOption} />
+					<AddOption
+						handleAddOption={this.handleAddOption} />
+				</div>
+				<OptionModal
+					selectedOption={this.state.selectedOption}
+					clearSelectedOption={this.clearSelectedOption} />
 			</div>
 		);
 	};
@@ -84,7 +86,7 @@ export default class IndecisionApp extends React.Component {
 		};
 	};
 
-	componentDidUpdate (prevProps, prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (prevState.options.length !== this.state.options.length) {
 			const json = JSON.stringify(this.state.options);
 			localStorage.setItem('options', json);
