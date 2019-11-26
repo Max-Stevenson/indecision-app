@@ -20,4 +20,4 @@ npm run dev-server
 ```
 
 ## Example
-![Screenshot] (/screenshots/example.png?raw=true)
+![Screenshot] (/indecision-app/blob/master/screenshots/example.png?raw=true)
