@@ -16,5 +16,8 @@ npm install
 To start the Indecision App simply run the following command and then navigate to http://localhost:8080/
 
 ```bash
-yarn run dev-server
+npm run dev-server
 ```
+
+## Example
+![Screenshot] (screenshots/example.png)
