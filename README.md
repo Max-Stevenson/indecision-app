@@ -20,4 +20,4 @@ npm run dev-server
 ```
 
 ## Example
-![Screenshot] (screenshots/example.png?raw=true)
+![Screenshot] (https://github.com/Max-Stevenson/indecision-app/tree/master/screenshots)
