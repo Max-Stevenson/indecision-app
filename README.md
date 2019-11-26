@@ -20,4 +20,4 @@ npm run dev-server
 ```
 
 ## Example
-![Screenshot] (screenshots/example.png)
+![Screenshot] (example.png)
